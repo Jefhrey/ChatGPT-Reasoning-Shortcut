@@ -1,0 +1,25 @@
+{
+  "manifest_version":3,
+  "version":"1.0",
+  "name":"Test",
+  "icons": {
+    "48": "wooper48.png"
+  },
+  "action":{
+    "default_icon": {
+      "48": "wooper48.png"
+    },
+    "default_title": "Click me!"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [{
+  "resources": ["ex.js"],
+  "matches": ["https://chatgpt.com/*"]
+}]
+}
