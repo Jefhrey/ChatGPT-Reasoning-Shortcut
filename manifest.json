@@ -2,14 +2,16 @@
   "manifest_version":3,
   "version":"1.0",
   "name":"Test",
+  "permissions": ["storage"],
   "icons": {
     "48": "wooper48.png"
   },
   "action":{
     "default_icon": {
       "48": "wooper48.png"
-    },
-    "default_title": "Click me!"
+    }, 
+    "default_title": "Click me!",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
@@ -18,8 +20,25 @@
       "run_at": "document_start"
     }
   ],
+  "background": {
+    "service_worker": "main.js"
+  },
+  "commands": {
+    "open-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "Open popup"
+    }
+  },
   "web_accessible_resources": [{
   "resources": ["ex.js"],
   "matches": ["https://chatgpt.com/*"]
 }]
 }
+
+
+
+
+
+

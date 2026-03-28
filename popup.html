@@ -2,21 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    html {
-      min-height: 5em;
-      min-width: 10em;
-      background: rgb(230, 224, 224);
-      text-align:center;
-    }
-
-    body{
-        padding-top: 1em;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <p>This is pretty cool:></p>
-  <!-- <script src = "background.js"></script> -->
+<div class = "title">
+<h1>Rebind</h1>
+<button class = "reset">
+  <img width="20" height="20" src="https://img.icons8.com/ios-filled/50/recurring-appointment.png" alt="recurring-appointment"/>
+</button>
+</div>
+Toggle Thinking Mode: 
+<div class="shortcut">
+  <button class = "key" data-id = "first">Ctrl</button>+
+  <button class = "key" data-id = "second">Q</button>+
+  <button class = "empty" data-id = "third">K</button>
+</div>
+<script src = "popup.js"></script>
 </body>
-</html>
+</html> 

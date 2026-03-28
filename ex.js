@@ -1,14 +1,21 @@
 const origFetch = window.fetch;
 var thinking = false;
+// let keys = ["Control", "q"];
 
-document.addEventListener("keydown", function(e){
-    if(e.ctrlKey && e.key == 'q')
-    {
-        e.preventDefault();
-        thinking = !thinking;
-        setGlow(thinking);
-        console.log("Thinking mode: " + thinking);
-    }
+console.log("Hi, I am ex.js ")
+window.addEventListener("message", (event) => {
+// important safety check
+if (event.source !== window) return;
+
+if (event.data.type === "FROM_PAGE") {
+    console.log("Got from page:", event.data.payload);
+    let delivery = event.data.payload;
+    let msg = delivery.msg;
+    console.log(msg);
+    thinking = !thinking;
+    setGlow(thinking); 
+    console.log("Thinking mode: " + thinking);
+}
 });
 
 const style = document.createElement('style');
@@ -19,6 +26,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// If window.navgivation API doesn't exists, use fallback
 if(window.navigation){
     window.navigation.addEventListener("navigate", (event) => {
         thinking = false;
@@ -98,3 +106,13 @@ window.fetch = function(...args){
 
     return origFetch.apply(this, args);
 }
+
+// console.log("sending msg from ex.js ....");
+// window.postMessage({
+//   type: "FROM_PAGE",
+//   payload: { key: "value" }
+// }, "*");
+// console.log("sent msg from ex.js ....");
+
+
+

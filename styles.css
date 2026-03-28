@@ -1,0 +1,36 @@
+html {
+    min-height: 5em;
+    min-width: 15em;
+    background: rgb(255, 255, 255);
+    text-align:center;
+}
+
+.key{
+    background: grey;
+    color: white;
+    text-align:center;
+    margin: 0.5em;
+}
+
+.empty{
+    background: hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 75%);
+    margin: 0.5em;
+    /* border: 2px dashed; */
+
+}
+
+.reset{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    display: inline;
+}
+
+.title{
+    display: flex;
+    
+}
