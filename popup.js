@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // localStorage.setItem("firstKey", "Control");
-    // localStorage.setItem("secondKey", "q");
-    // localStorage.setItem("thirdKey", false);
-
     const buttons = document.querySelectorAll(".key, .empty");
 
 
@@ -31,8 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let active = buttons[0];
     buttons.forEach((element) => {
         element.addEventListener('click', focus);
-        // element.addEventListener("keydown", changeKey);
-
     });
 
 
@@ -44,18 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.className = "empty";
   }
 
-  // function changeKey(event)
-  // {
-  //   const key = event.key.toLowerCase();
-  //   let arg = active.dataset.id + "Key";
-  //   console.log(arg);
-  //   localStorage.setItem(arg, key);
-  //   console.log("set ", arg, "to ", key, "successfully");
-  //   active.innerHTML = key;
-  //   active.className = "key";
-  // }
-
-  
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
     if (!tab?.id) return;
 

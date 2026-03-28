@@ -31,14 +31,6 @@ document.addEventListener("keydown", function(e){
     console.log("Pressed ", pressed);
     if(hasVal(e.key.toLowerCase())) pressed.add(e.key.toLowerCase());
     console.log("Pressed Keys: ", pressed);
-    // if(e.ctrlKey && e.key.toLowerCase() == 'q')
-    // {
-    //     e.preventDefault();
-    //     window.postMessage({
-    //     type: "FROM_PAGE",
-    //     payload: { msg: "keyPressed"}
-    //     }, "*");
-    // }
 
     if(pressed.size === target && !triggered)
     {
@@ -48,7 +40,6 @@ document.addEventListener("keydown", function(e){
         type: "FROM_PAGE",
         payload: { msg: "keyPressed"}
         }, "*");
-        // pressed.clear();
     }
 });
 

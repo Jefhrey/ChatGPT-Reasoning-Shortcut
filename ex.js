@@ -1,6 +1,5 @@
 const origFetch = window.fetch;
 var thinking = false;
-// let keys = ["Control", "q"];
 
 console.log("Hi, I am ex.js ")
 window.addEventListener("message", (event) => {
@@ -107,12 +106,6 @@ window.fetch = function(...args){
     return origFetch.apply(this, args);
 }
 
-// console.log("sending msg from ex.js ....");
-// window.postMessage({
-//   type: "FROM_PAGE",
-//   payload: { key: "value" }
-// }, "*");
-// console.log("sent msg from ex.js ....");
 
 
 
