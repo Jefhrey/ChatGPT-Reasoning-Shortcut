@@ -3,24 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // Loading Buttons with correct key from LocalStorage
-    for(let i = 0; i < 3; i++)
+    function loadBtn()
     {
-      let arg = buttons[i].dataset.id + "Key";
-      console.log(arg);
-      let curr = localStorage.getItem(arg);
-      console.log(curr)
-      console.log(curr, typeof curr);
-      if(curr === "false") 
-        {
-          buttons[i].className = "empty"
-          console.log("Empty key not taken")
-        }
-      else
+      for(let i = 0; i < 3; i++)
       {
-        buttons[i].innerHTML = curr;
-        buttons[i].className = "key";
+        let arg = buttons[i].dataset.id + "Key";
+        console.log(arg);
+        let curr = localStorage.getItem(arg);
+        console.log(curr)
+        console.log(curr, typeof curr);
+        if(curr === null) 
+          {
+            buttons[i].className = "empty";
+            console.log("Empty key not taken");
+          }
+        else
+        {
+          buttons[i].innerHTML = curr;
+          buttons[i].className = "key";
+        }
       }
     }
+    loadBtn();
     console.log(buttons);
     console.log("hi");
 
@@ -42,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tab?.id) return;
 
     const port = chrome.tabs.connect(tab.id, { name: "popup" });
+    const resetPort = chrome.tabs.connect(tab.id, { name: "reset" });
     function sendUpdate(event)
     {
 
@@ -60,9 +65,22 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Message sent");
     }
 
+    function reset()
+    {
+        localStorage.setItem("firstKey", "control");
+        localStorage.setItem("secondKey", "q");
+        localStorage.removeItem("thirdKey");
+        loadBtn();
+
+        resetPort.postMessage({msg: "Reset"});
+        console.log("Reset message sent");
+    }
+
     buttons.forEach((element) => {
         element.addEventListener('keydown', sendUpdate);
     });
+
+    document.querySelector(".reset").addEventListener('click', reset);
 
   });
 });

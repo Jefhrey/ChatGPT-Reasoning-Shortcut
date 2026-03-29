@@ -55,17 +55,36 @@ console.log("test2")
 
 // Receieving keybind updates
 chrome.runtime.onConnect.addListener((port) => {
-  if (port.name !== "popup") return;
-  chrome.runtime.sendMessage({ status: "connected" });
-  port.onMessage.addListener((msg) => {
-    let arg = msg.arg;
-    let key = msg.key;
-    console.log("Got from popup:", msg.arg, msg.key);
-    localStorage.setItem(arg, key);
-    keys[arg] = key;
-    if(arg == "thirdKey") target = 3;
-  });
-
+//   if (port.name !== "popup") return;
+  if(port.name == "popup")
+    {
+        chrome.runtime.sendMessage({ status: "connected" });
+        port.onMessage.addListener((msg) => {
+            let arg = msg.arg;
+            let key = msg.key;
+            console.log("Got from popup:", msg.arg, msg.key);
+            localStorage.setItem(arg, key);
+            keys[arg] = key;
+            if(arg == "thirdKey") target = 3;
+        });
+    }
+  else if(port.name == "reset")
+  {
+        chrome.runtime.sendMessage({ status: "connected" });
+        port.onMessage.addListener((msg) => {
+            console.log("Got message");
+        localStorage.setItem("firstKey", "control");
+        localStorage.setItem("secondKey", "q");
+        localStorage.removeItem("thirdKey");
+        keys = {
+            "firstKey": localStorage.getItem("firstKey"),
+            "secondKey": localStorage.getItem("secondKey"),
+            "thirdKey": null
+        }
+        target = 2;
+        });
+  }
+  else return;
 });
 
 function hasVal(value)
