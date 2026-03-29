@@ -10,7 +10,7 @@ if(f === null)
     localStorage.setItem("secondKey", "q");
     target = 2;
 }
-console.log("Hi, I'm content.js")
+// console.log("Hi, I'm content.js")
 let t = localStorage.getItem("thirdKey");
 
 let keys = {
@@ -22,15 +22,15 @@ if (t) {
     keys.thirdKey = t;
     target = 3;
 }
-console.log("Keys: ", keys);
+// console.log("Keys: ", keys);
 // Update to wrapper:
 let pressed = new Set();
 let triggered = false;
 document.addEventListener("keydown", function(e){
-    console.log(keys);
-    console.log("Pressed ", pressed);
+    // console.log(keys);
+    // console.log("Pressed ", pressed);
     if(hasVal(e.key.toLowerCase())) pressed.add(e.key.toLowerCase());
-    console.log("Pressed Keys: ", pressed);
+    // console.log("Pressed Keys: ", pressed);
 
     if(pressed.size === target && !triggered)
     {
@@ -51,18 +51,18 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-console.log("test2")
+// console.log("test2")
 
 // Receieving keybind updates
 chrome.runtime.onConnect.addListener((port) => {
 //   if (port.name !== "popup") return;
   if(port.name == "popup")
     {
-        chrome.runtime.sendMessage({ status: "connected" });
+        // chrome.runtime.sendMessage({ status: "connected" });
         port.onMessage.addListener((msg) => {
             let arg = msg.arg;
             let key = msg.key;
-            console.log("Got from popup:", msg.arg, msg.key);
+            // console.log("Got from popup:", msg.arg, msg.key);
             localStorage.setItem(arg, key);
             keys[arg] = key;
             if(arg == "thirdKey") target = 3;
@@ -70,9 +70,9 @@ chrome.runtime.onConnect.addListener((port) => {
     }
   else if(port.name == "reset")
   {
-        chrome.runtime.sendMessage({ status: "connected" });
+        // chrome.runtime.sendMessage({ status: "connected" });
         port.onMessage.addListener((msg) => {
-            console.log("Got message");
+            // console.log("Got message");
         localStorage.setItem("firstKey", "control");
         localStorage.setItem("secondKey", "q");
         localStorage.removeItem("thirdKey");

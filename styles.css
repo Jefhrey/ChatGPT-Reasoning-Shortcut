@@ -1,12 +1,18 @@
 html {
     min-height: 5em;
     min-width: 15em;
-    background: rgb(255, 255, 255);
+    background: #f7f7f7;
     text-align:center;
+}
+
+body{
+    font-family: "Crimson Pro", serif;
+    font-size: 1em;
 }
 
 .key{
     background: grey;
+    /* background:#555353; */
     color: white;
     text-align:center;
     margin: 0.5em;
@@ -25,12 +31,40 @@ html {
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
-    overflow: hidden;
+    align-self: flex-end;
+    margin-left: auto;
+    /* height: 32px; */
+    /* overflow: hidden; */
     outline: none;
-    display: inline;
+    /* display: inline; */
+    /* position: absolute; */
+    /* right: 1em; */
+    /* top: 0.5em; */
 }
 
 .title{
+    font-size: 2em;
+    font-weight: 500;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    margin: 0;
+    margin-left: 70px;
+    line-height: 1;
+    /* flex: 3; */
+}
+
+.box{
     display: flex;
-    
+    align-items: center;
+    justify-content: center;
+}
+
+#txt{
+    margin-bottom: 5px;
+}
+
+.credit{
+    color: grey;
+    font-size: 0.7em;
+    margin-top: 5px;
 }

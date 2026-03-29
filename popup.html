@@ -1,23 +1,28 @@
-<!-- popup.html -->
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class = "title">
-<h1>Rebind</h1>
-<!-- Keybinds are stored in content.js Send update to them -->
-<button class = "reset">
-  <img width="20" height="20" src="https://img.icons8.com/ios-filled/50/recurring-appointment.png" alt="recurring-appointment"/>
+<div class = "box">
+<p class="title">Rebind</p>
+<button class = "reset" title = "Reset shortcut to default (Ctrl + q)">
+  <img width="20" height="20" src="reset2.png" alt="recurring-appointment"/>
 </button>
+<!-- Keybinds are stored in content.js Send update to them -->
 </div>
-Toggle Thinking Mode: 
+<p id = "txt">Toggle thinking mode:</p> 
 <div class="shortcut">
   <button class = "key" data-id = "first">Ctrl</button>+
   <button class = "key" data-id = "second">Q</button>+
   <button class = "empty" data-id = "third">K</button>
 </div>
 <script src = "popup.js"></script>
+<div class = "credit">
+  <a target="_blank" href="https://icons8.com/icon/12491/reset">Reset</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+</div>
 </body>
 </html> 

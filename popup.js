@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
       for(let i = 0; i < 3; i++)
       {
         let arg = buttons[i].dataset.id + "Key";
-        console.log(arg);
+        // console.log(arg);
         let curr = localStorage.getItem(arg);
-        console.log(curr)
-        console.log(curr, typeof curr);
+        // console.log(curr)
+        // console.log(curr, typeof curr);
         if(curr === null) 
           {
             buttons[i].className = "empty";
-            console.log("Empty key not taken");
+            // console.log("Empty key not taken");
           }
         else
         {
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     loadBtn();
-    console.log(buttons);
-    console.log("hi");
+    // console.log(buttons);
+    // console.log("hi");
 
     let active = buttons[0];
     buttons.forEach((element) => {
@@ -54,15 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
       let btn = event.target;
       // let arg = btn.dataset.id + "Key";
       let arg = active.dataset.id + "Key"
-      console.log(arg);
+      // console.log(arg);
       localStorage.setItem(arg, event.key.toLowerCase());
-      console.log("set ", arg, "to ", event.key.toLowerCase(), "successfully");
+      // console.log("set ", arg, "to ", event.key.toLowerCase(), "successfully");
       active.innerHTML = event.key.toLowerCase();
       active.className = "key";
 
-      console.log("The key: ", event.key.toLowerCase());
+      // console.log("The key: ", event.key.toLowerCase());
       port.postMessage({ arg: arg, key: event.key.toLowerCase()});
-      console.log("Message sent");
+      // console.log("Message sent");
     }
 
     function reset()
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadBtn();
 
         resetPort.postMessage({msg: "Reset"});
-        console.log("Reset message sent");
+        // console.log("Reset message sent");
     }
 
     buttons.forEach((element) => {

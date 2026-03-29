@@ -1,19 +1,19 @@
 const origFetch = window.fetch;
 var thinking = false;
 
-console.log("Hi, I am ex.js ")
+// console.log("Hi, I am ex.js ")
 window.addEventListener("message", (event) => {
 // important safety check
 if (event.source !== window) return;
 
 if (event.data.type === "FROM_PAGE") {
-    console.log("Got from page:", event.data.payload);
+    // console.log("Got from page:", event.data.payload);
     let delivery = event.data.payload;
     let msg = delivery.msg;
-    console.log(msg);
+    // console.log(msg);
     thinking = !thinking;
     setGlow(thinking); 
-    console.log("Thinking mode: " + thinking);
+    // console.log("Thinking mode: " + thinking);
 }
 });
 
@@ -30,7 +30,7 @@ if(window.navigation){
     window.navigation.addEventListener("navigate", (event) => {
         thinking = false;
         setGlow(false);
-        console.log('location changed!');
+        // console.log('location changed!');
     });
     }
 else{
@@ -60,7 +60,7 @@ else{
     window.addEventListener('locationchange', () => {
         thinking = false;
         setGlow(false);
-        console.log('location changed!');
+        // console.log('location changed!');
     })
 
 }
@@ -84,10 +84,10 @@ window.fetch = function(...args){
     {
     // console.log("The URL:");
     // console.log(resource);
-    console.log("The payload:");
+    // console.log("The payload:");
     // console.log(options);
     const json = JSON.parse(options.body);
-    console.log(JSON.stringify(json));
+    // console.log(JSON.stringify(json));
     if(thinking)
     {
         json.system_hints = ["reason"];
@@ -98,8 +98,8 @@ window.fetch = function(...args){
         json.system_hints = [];
         delete json.messages[0].metadata.system_hints; // Cuz the thinking mode might've been on during typing, and it needs to be switched off
     }
-    console.log("Modified payload:")
-    console.log(JSON.stringify(json));
+    // console.log("Modified payload:")
+    // console.log(JSON.stringify(json));
     options.body = JSON.stringify(json);
     }
 
