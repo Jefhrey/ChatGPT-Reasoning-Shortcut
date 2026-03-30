@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".key, .empty");
-
+    // First time setup
+    let f = localStorage.getItem("firstKey");
+    if(f === null)
+    {
+        // Set defaults:
+        localStorage.setItem("firstKey", "control");
+        localStorage.setItem("secondKey", "q");
+        target = 2;
+    }
 
     // Loading Buttons with correct key from LocalStorage
     function loadBtn()
