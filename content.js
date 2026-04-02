@@ -6,6 +6,7 @@ let f = localStorage.getItem("firstKey");
 if(f === null)
 {
     // Set defaults:
+    console.log("hai");
     localStorage.setItem("firstKey", "control");
     localStorage.setItem("secondKey", "q");
     target = 2;

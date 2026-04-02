@@ -1,6 +1,6 @@
 {
   "manifest_version":3,
-  "version":"1.0",
+  "version":"1.1",
   "name":"thinkle",
   "description": "A browser extension that enables ChatGPT's Thinking mode instantly with a keyboard shortcut -no clicking required",
   "permissions": ["storage"],
