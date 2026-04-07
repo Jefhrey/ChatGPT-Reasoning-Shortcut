@@ -28,7 +28,8 @@
     }
   ],
   "background": {
-    "service_worker": "main.js"
+    "service_worker": "main.js",
+    "scripts": ["background.js"]
   },
   "commands": {
     "open-popup": {

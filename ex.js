@@ -136,17 +136,7 @@ window.fetch = async function(...args){
         {
             vConfirm = false;
             console.log("RUNNING vConfirm! ")
-            // {
-            //     if(vCheck())
-            //     {
-            //         setupObserver(document.querySelector("#composer-submit-button").parentElement.parentElement);
-            //     }
-            //     else
-            //     {
-            //         setupObserver(document.querySelector('[class*="composer-submit-button"]').parentElement.parentElement.parentElement.parentElement);
-            //     }
-            // }
-            setTimeout(temp, 2000);
+            setTimeout(temp, 3000);
         }
     }
     else if(resource instanceof Request)   return  origFetch.apply(this, args);
